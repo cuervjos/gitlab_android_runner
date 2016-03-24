@@ -4,7 +4,7 @@ RUN dpkg --add-architecture i386 \
  && apt-get -y update \
  && apt-get -y install libncurses5:i386 libstdc++6:i386 zlib1g:i386 \
  && rm -rf /var/lib/apt/lists/*
-# For this to work you must download and copy http://dl.google.com/android/android-sdk_r25.4.1-linux.tgz into assets/
+# Downloading a copy of the android sdk
 RUN wget --quiet --output-document=android-sdk.tgz https://dl.google.com/android/android-sdk_r24.4.1-linux.tgz \
  && tar xvf android-sdk.tgz \
  && rm android-sdk.tgz \
@@ -13,10 +13,10 @@ RUN echo y | /sdk/tools/android update sdk -a -u --filter platform-tools,build-t
 RUN echo y | /sdk/tools/android update sdk -a -u --filter extra-google-google_play_services,extra-android-support
 RUN echo y | /sdk/tools/android update sdk -a -u --filter extra-android-m2repository,extra-google-m2repository
 RUN echo y | /sdk/tools/android update sdk -a -u --filter extra-google-google_play_services,extra-android-support,extra-android-m2repository
-# For this to work you must download and copy https://services.gradle.org/distributions/gradle-2.12-bin.zip into assets/
+# Downloading a copy of gradle binaries
 RUN wget --quiet --output-document=gradle.zip https://services.gradle.org/distributions/gradle-2.10-bin.zip \
  && unzip -q gradle.zip \
  && rm gradle.zip
 
 ENV ANDROID_HOME=/sdk
-ENV PATH=$PATH:/sdk/tools:/gradle-2.10/bin
+ENV PATH=$PATH:/sdk/tools:/gradle/bin
