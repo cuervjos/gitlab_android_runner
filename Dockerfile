@@ -2,7 +2,7 @@ FROM java:7-jdk
 MAINTAINER cuervjos@gmail.com
 RUN dpkg --add-architecture i386 \
  && apt-get -y update \
- && apt-get -y install libncurses5:i386 libstdc++6:i386 zlib1g:i386 \
+ && DEBIAN_FRONTEND=noninteractive apt-get -y install libncurses5:i386 libstdc++6:i386 zlib1g:i386 \
  && rm -rf /var/lib/apt/lists/*
 # Downloading a copy of the android sdk
 RUN wget --quiet --output-document=android-sdk.tgz https://dl.google.com/android/android-sdk_r24.4.1-linux.tgz \
