@@ -19,4 +19,4 @@ RUN wget --quiet --output-document=gradle.zip https://services.gradle.org/distri
  && rm gradle.zip
 
 ENV ANDROID_HOME=/sdk
-ENV PATH=$PATH:/sdk/tools:/gradle/bin
+ENV PATH=$PATH:/sdk/tools:/gradle-2.10/bin
